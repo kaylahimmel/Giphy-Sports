@@ -1,20 +1,25 @@
 // FUNCTIONS & VARIABLES-----------------------------------------------------------------------------------
 var sports = ["basketball", "football", "swimming", "tennis", "soccer", "olympics", "boxing", "bowling", "rugby",
-"curling", "track & field", "ice skating", "wrestling", "softball", "baseball", "golf", "volleyball"]
+"curling", "track", "ice skating", "wrestling", "softball", "baseball", "golf", "volleyball"]
 
 var topic = i.toString()
 
-var searchGiphy = function(topic) {
+// function to generate the URL each time it's needed rather than type it out
+var userSearch = function(topic) {
 var urlValue = "https://api.giphy.com/v1/gifs/search?api_key=qYHkASPlrj1bvkwFNv1C7QfsCGAUcdGD&q=" + topic + "&limit=10&offset=0&rating=G&lang=en";
-$.ajax({
-url: urlValue;
-method: "GET";
-}).then(function(data) {
-// assign the ajax call function to the button
-makeButton();
-buttonClass.append.buttonTag;
-console.log(data);
-});
+};
+
+
+var searchTopic = function(topic) {
+    $.ajax({
+        url: urlValue;
+        method: "GET";
+    }).then(function(data) {
+        // assign the ajax call function to the button
+        makeButton();
+        buttonClass.append.buttonTag;
+        console.log(data);
+    });
 };
 
 
@@ -40,9 +45,13 @@ var buttonFunction = function() {
 };
 
 // call the form HTML elements with "search" ID
-// make a new button and append it to the HTML div element with the class "buttons"
-var makeUserButton = function() {
-    var submitButton = $("#submit");
+var getUserSearch = function() {
+    var userQuery = $("#search");
+    // append the text results from the userQuery to the "sports" array
+    $(sports).append("#search")
+    // make a new button with this new query content
+    makeButton();
+};
 
 
 // whenever that button is clicked, show 9 thumbnails of gifs
