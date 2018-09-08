@@ -10,22 +10,22 @@ var sports = ["basketball", "football", "swimming", "tennis", "soccer", "olympic
 
 // PUSH USER INPUTS TO THE "SPORTS" ARRAY AND MAKE BUTTONS-------------------------------------------------
 $(document.body).on("click", "button", function(event) {
-
     // prevent the browser default from happening so we can control how the event is handled
-    event.preventDefault();
+    // event.preventDefault();
         // This line will grab the text from the input box
         var userSearch = $("#search").val().trim();
+        console.log(userSearch);
         // The movie from the textbox is then added to our array
         sports.push(userSearch);
-        // create a variable "sportTopic" and give the button the "data-topic" attribute defined in the HTML
-        var sportTopic = $(this).attr("data-name");
+        // // create a variable "sportTopic" and give the button the "data-topic" attribute defined in the HTML
+        // var sportTopic = $(this).attr("data-name");
 
         // calling renderButtons which handles the processing of our movie array
         // createButtons();
       });
 
 
-// Function for displaying buttons with 'sports' names
+// CREATE BUTTONS AND ADD TEXT TAHT CORRESPONDS WITH THE TEXT IN THE ARRAY -------------------------------------
 function createButtons() {
     $("#buttons").empty();
     // loop through all of the array and make a button for each sportTopic.
@@ -41,10 +41,19 @@ function createButtons() {
         $("#buttons").append(newButton);
     }
 };
- createButtons();
 
+// Run the function
+createButtons();
+
+
+// ADD 
+
+
+
+// ASSIGN THE GIPHY SEARCH RESULTS TO EACH BUTTON --------------------------------------------------------------
 // create on.click event for the buttons in the HTML with the ID "buttons"
 $("#buttons").on("click", "button", function() {
+    
     // create a variable "dataTopic" and give the button the "data-topic" attribute defined in the HTML
     var dataTopic = $(this).attr("data-name");
     // create an .ajax request, 

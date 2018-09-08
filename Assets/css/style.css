@@ -1,27 +1,53 @@
 body {
-    background-color: darkkhaki;
-    color: black;
-    font-family: 'Times New Roman', Times, serif
+    background-color: darkslateblue;
+    color: ivory;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-h1, h3 {
-    margin: 20px 0px;
-    color: black;
+h1 {
+    margin: 20px 5px;
+    color: ivory;
+    font-size: 75px;
     font-family: 'Chango', serif;
+    letter-spacing: 0.1em;
+}
+
+form {
+    margin: 40px 5px;
+}
+
+#search {
+    background-color: ivory;
+    font-size: 14px;
+}
+
+#submit {
+    margin: 5px 5px;
+    padding: 4px 8px;
+    border-radius: 5px;
+    background-color: ivory;
+    color: black;
+    font-size:12px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+button {
+    margin: 5px 5px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background-color: ivory;
+    color: black;
+    font-size:18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
 }
 
 .container {
-
+    margin: 10px 25px;
 }
 
-#buttons {
-
-}
-
-#populatedGifs {
-
-}
-
-#search, #submit {
-
+img {
+    margin: 10px 5px;
+    float: left;
 }
