@@ -1,32 +1,66 @@
 // FUNCTIONS & VARIABLES-----------------------------------------------------------------------------------
+// starting array (these should be made into buttons on the HTML page at document.ready)
 var sports = ["basketball", "football", "swimming", "tennis", "soccer", "olympics", "boxing", "bowling", "rugby",
 "curling", "track", "ice skating", "wrestling", "softball", "baseball", "golf", "volleyball"]
 
-// create a variable "topic" and give the button the "data-topic" attribute defined in the HTML
-var topic = $(this).attr("data-topic");
-
-// 
 
 
-// make a variable for the giphy API where the "topic" variable above is dropped into the query section 
-// of the URL so we can use it for all of the buttons (and any new ones)
-var queryURL = "https://api.giphy.com/v1/imgTags/search?q=" + topic + "&api_key=dc6zaTOxFJmzC&limit=10";
+// // make a variable for the giphy API where the "sportTopic" variable above is dropped into the URL query section 
+// var queryURL = "https://api.giphy.com/v1/imgTags/search?q=" + sportTopic + "&api_key=dc6zaTOxFJmzC&limit=10";
 
+// PUSH USER INPUTS TO THE "SPORTS" ARRAY AND MAKE BUTTONS-------------------------------------------------
+$(document.body).on("click", "button", function(event) {
+
+    // prevent the browser default from happening so we can control how the event is handled
+    event.preventDefault();
+        // This line will grab the text from the input box
+        var userSearch = $("#search").val().trim();
+        // The movie from the textbox is then added to our array
+        sports.push(userSearch);
+        // create a variable "sportTopic" and give the button the "data-topic" attribute defined in the HTML
+        var sportTopic = $(this).attr("data-name");
+
+        // calling renderButtons which handles the processing of our movie array
+        // createButtons();
+      });
+
+
+// Function for displaying buttons with 'sports' names
+function createButtons() {
+    $("#buttons").empty();
+    // loop through all of the array and make a button for each sportTopic.
+    for (var i = 0; i < sports.length; i++) {
+        // make a new button everytime the variable "button" is called in the code
+        var newButton = $("<button>");
+        // Add ID
+        newButton.attr("id", sports[i]);
+        // Add data-attribute with a value of the movie at index i
+        newButton.attr("data-name", sports[i]);
+        newButton.text(sports[i]);
+        // Add the button to the DOM, appending to HTML element with "buttons" ID
+        $("#buttons").append(newButton);
+    }
+};
+ createButtons();
 
 // create on.click event for the buttons in the HTML with the ID "buttons"
-$("#buttons").on("click", function() {
-    
-    // create an .ajax request, defining the URL with the "queryURL" we created above and using the
-    // GET method to attach to grab the data
+$("#buttons").on("click", "button", function() {
+    // create a variable "dataTopic" and give the button the "data-topic" attribute defined in the HTML
+    var dataTopic = $(this).attr("data-name");
+    // create an .ajax request, 
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + dataTopic + "&api_key=dc6zaTOxFJmzC&limit=10";
+
     $.ajax({
+        // include the API call info and assign the URL value to the button
         url: queryURL,
+        // use the GET method to attach to grab the data
         method: "GET"
     })
     
-    // once we have the queryData data, use .then to do something else
-    .then(function(queryData) {
-        // make a variable for the queryData.data
-        var results = queryData.data;
+    // once we have the response data, use .then to do something else
+    .then(function(response) {
+        // make a variable to call in future code instead of typing response.data every time
+        var results = response.data;
 
         // for every iteration of the results variable,
         for (var i = 0; i < results.length; i++) {
@@ -45,80 +79,9 @@ $("#buttons").on("click", function() {
 });
 
 
-$(document.body).on("click", "button", function() {
-    // for every iteration of the results variable,
-    for (var i = 0; i < sports.length; i++) {
-        // make a new button everytime the variable "button" is called in the code
-        var makeButton = $("<button>");
-        // append the queryData results to the new button
-        makeButton.
-
-
-
-
-
-    });
-};
-
-
-// need another function to make the buttons 
-
-
-
-
-
-
-
-//   var topic = i.toString()
-
-// // function to generate the URL each time it's needed rather than type it out
-// var userSearch = function(topic) {
-// var urlValue = "https://api.giphy.com/v1/imgTags/search?api_key=qYHkASPlrj1bvkwFNv1C7QfsCGAUcdGD&q=" + topic + "&limit=9&offset=0&rating=G&lang=en";
-// };
-
-
-// var searchTopic = function(topic) {
-//     $.ajax({
-//         url: urlValue
-//         method: "GET"
-//     }).then(function(data) {
-//         // assign the ajax call function to the button
-//         makeButton();
-//         buttonClass.append.buttonTag;
-//         console.log(data);
-//     });
-// };
-
-
-// var makeButton = function() {
-// // reference the HTML class "buttons" and create a new button element
-// var buttonClass = $(".buttons");
-// // make a button 
-// var buttonTag = $("<button>").attr("name", topic);
-// buttonClass.append(buttonTag);
-// };
-
-// // loop through all of the array and make a button for each topic.
-// // include the API call info and assign the URL value to the button
-// // whenever a button is clicked, it should show 9 thumbnails of imgTags
-// // when a thumbnail is clicked, it should play the imgTag repeatedly
-// // when it is clicked a second time, it should stop and/or return to the thumbnail image
-
-// var buttonFunction = function() {
-//     for (var i = 0; i < sports.length; i++) {
-//         makeButton();
-//     };
-// };
-
-// // call the form HTML elements with "search" ID
-// var getUserSearch = function() {
-//     var userQuery = $("#search");
-//     // append the text results from the userQuery to the "sports" array
-//     $(sports).append("#search")
-//     // make a new button with this new query content
-//     makeButton();
-//     $("#search").val("");
-// };
+// whenever a button is clicked, it should show 9 thumbnails of imgTags
+// when a thumbnail is clicked, it should play the imgTag repeatedly
+// when it is clicked a second time, it should stop and/or return to the thumbnail image
 
 
 // // whenever that button is clicked, show 9 thumbnails of imgTags
