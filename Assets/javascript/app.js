@@ -82,6 +82,7 @@ $("#buttons").on("click", "button", function() {
             // append the new div tag to the HTML ID "imgTagt-appear-here"
             $("#populatedGifs").append(newDiv);
         }
+        
     });
 });
 
