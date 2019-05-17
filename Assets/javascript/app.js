@@ -1,3 +1,6 @@
+//DEPENDENCIES
+import 
+
 // FUNCTIONS & VARIABLES-----------------------------------------------------------------------------------
 // starting array (these should be made into buttons on the HTML page at document.ready)
 var topics = ["basketball", "football", "swimming", "tennis", "soccer", "olympics", "boxing", "bowling", "rugby",
@@ -54,8 +57,11 @@ $("#buttons").on("click", "button", function() {
     var dataTopic = $(this).attr("data-name");
     // make variable to use in place of full URL throughout code
     // also, whenever a button is clicked, it should show 10 thumbnails of imgTags (the "limit=10" in the URL does this)
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + dataTopic + "&api_key=dc6zaTOxFJmzC&limit=10";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + dataTopic + "&api_key=" + apiKey + "&limit=10";
     
+
+//     var xhr = $.get("http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=YOUR_API_KEY&limit=5");
+// xhr.done(function(data) { console.log("success got data", data); });
     // create an .ajax request, 
     $.ajax({
         // include the API call info and assign the URL value to the button
@@ -85,8 +91,3 @@ $("#buttons").on("click", "button", function() {
         
     });
 });
-
-
-// PAUSE AND PLAY ON CLICK FUNCTIONALITY -----------------------------------------------------------------
-// when a thumbnail is clicked, it should play the imgTag repeatedly
-// when it is clicked a second time, it should stop and/or return to the thumbnail image
