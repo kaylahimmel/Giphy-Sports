@@ -1,5 +1,9 @@
 //DEPENDENCIES
-import 
+// Read and set environment variables
+require("dotenv").config();
+
+// Import the API keys
+var apiKey = require("./apiKey");
 
 // FUNCTIONS & VARIABLES-----------------------------------------------------------------------------------
 // starting array (these should be made into buttons on the HTML page at document.ready)
