@@ -4,10 +4,6 @@ var topics = ["basketball", "football", "swimming", "tennis", "soccer", "olympic
 "curling", "track", "ice skating", "wrestling", "softball", "baseball", "golf", "volleyball"]
 
 
-
-// // make a variable for the giphy API where the "sportTopic" variable above is dropped into the URL query section 
-// var queryURL = "https://api.giphy.com/v1/imgTags/search?q=" + sportTopic + "&api_key=dc6zaTOxFJmzC&limit=10";
-
 // PUSH USER INPUTS TO THE "topics" ARRAY AND MAKE BUTTONS-------------------------------------------------
 $(document.body).on("click", "#submit", function(event) {
     // $("#submit").on("click", "button", function(event) {
@@ -24,7 +20,7 @@ $(document.body).on("click", "#submit", function(event) {
       });
 
 
-// CREATE BUTTONS AND ADD TEXT TAHT CORRESPONDS WITH THE TEXT IN THE ARRAY -------------------------------------
+// BUILD BUTTONS------------------------------------------------------------------------------------------
 function createButtons() {
     $("#buttons").empty();
     // loop through all of the array and make a button for each sportTopic.
@@ -45,7 +41,7 @@ function createButtons() {
 createButtons();
 
 
-// ASSIGN THE GIPHY SEARCH RESULTS TO EACH BUTTON --------------------------------------------------------------
+// ASSIGN THE GIPHY SEARCH RESULTS TO EACH BUTTON --------------------------------------------------------
 // create on.click event for the buttons in the HTML with the ID "buttons"
 $("#buttons").on("click", "button", function() {
     $("#populatedGifs").empty();
@@ -65,7 +61,7 @@ $("#buttons").on("click", "button", function() {
         method: "GET"
     })
     
-    // once we have the response data, use .then to do something else
+    // once we have the response data, use .then to do build on it
     .then(function(response) {
         // make a variable to call in future code instead of typing response.data every time
         var results = response.data;
